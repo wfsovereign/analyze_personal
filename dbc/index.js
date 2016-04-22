@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import fs from 'fs';
-import path from 'path';
-import Debug from 'debug';
+var mongoose = require('mongoose');
+var fs = require('fs');
+var path = require('path');
+var Debug = require('debug');
 
 //标记，防止重复加载
 var isReady = false;
@@ -29,12 +29,10 @@ function exportModule() {
     var files = fs.readdirSync(path.join(__dirname, './models')).map(ele => {
         return ele.split('.')[0];
     });
-    console.log('file :',files);
     files.forEach(ele => {
-        console.log(ele, path.resolve(__dirname, './models', ele));
         schema[ele] = mongoose.model(ele, require(path.resolve(__dirname, './models', ele)));
     });
     return schema;
 }
 
-export default exportModule();
+module.exports = exportModule();

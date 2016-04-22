@@ -1,22 +1,7 @@
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://localhost/huatian');
-//var db = mongoose.connection;
-//console.log('begin');
-//db.on('error', function (err) {
-//    if (err) {
-//        console.log(err);
-//        console.error('mongodb connect error,now exit thread');
-//        process.exit(-1);
-//    }
-//    console.log('*********** mongodb connect success********');
-//});
-//db.once('open', function () {
-//    console.log('*********** mongodb connect success********');
-//});
-
 var Schema = mongoose.Schema;
 
-var User = module.exports = new Schema({
+module.exports = new Schema({
     "followed": Boolean,
     "house": String,
     "sex": Number,
@@ -54,20 +39,3 @@ var User = module.exports = new Schema({
     "position": String,
     "industry": String
 });
-//var user = mongoose.model('user', User);
-//var u = new user({nickName:'f'});
-//u.save(function (err, r) {
-//    console.log('======');
-//    console.log(err);
-//    console.log(r);
-//    user.find().limit(1).exec(function (err, u) {
-//        console.log('--------');
-//        console.log(err);
-//        console.log(u);
-//    });
-//});
-//user.find().limit(1).exec(function (err, u) {
-//        console.log('--------');
-//        console.log(err);
-//        console.log(u);
-//    });
