@@ -1,0 +1,7 @@
+#!/usr/local/bin/babel-node
+
+import app from '../app';
+
+app.listen(3000);
+
+console.log('listening on post 3000')

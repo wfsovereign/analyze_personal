@@ -1,0 +1,16 @@
+html
+    head
+        title 我看看呢
+    body
+        h1 看看
+        div
+            table
+                - if(users) {
+                - each user in users
+                    tr
+                        td=user.nickName
+                        td
+                            img(src= user.avatar)
+                -}
+
+

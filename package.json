@@ -1,0 +1,41 @@
+{
+  "name": "search_girl_friends_for_programer",
+  "version": "1.0.0",
+  "description": "huatiansite girlfriend programer coder nodejs",
+  "main": "index.js",
+  "dependencies": {
+    "babel-core": "6.7.7",
+    "babel-polyfill": "6.7.4",
+    "babel-preset-es2015-node5": "1.2.0",
+    "babel-preset-stage-3": "6.5.0",
+    "debug": "2.2.0",
+    "jade": "1.11.0",
+    "koa": "^2.0.0",
+    "koa-bodyparser": "2.0.1",
+    "koa-convert": "1.2.0",
+    "koa-logger": "1.3.0",
+    "koa-nunjucks-render": "1.1.1",
+    "koa-response-time": "1.0.2",
+    "koa-router": "^7.0.1",
+    "koa-static": "2.0.0",
+    "koa-views": "5.0.1",
+    "koajs-nunjucks": "1.0.1",
+    "mongoose": "4.4.13",
+    "nunjucks": "2.4.2",
+    "request": "2.72.0",
+    "superagent": "1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "babel-node ./bin/run"
+  },
+  "keywords": [
+    "huatiansite",
+    "girlfriend",
+    "programer",
+    "coder",
+    "nodejs"
+  ],
+  "author": "wfsovereign",
+  "license": "ISC"
+}
