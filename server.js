@@ -10,7 +10,6 @@ function Server(option) {
 Server.prototype = koa();
 
 
-
 Server.prototype.start = function () {
     var port = process.env.PORT || this.opts.port || 3000;
     this.keys = ['wfsovereign'];
@@ -19,7 +18,9 @@ Server.prototype.start = function () {
     this.use(middleware.ResponseTime());
     this.use(middleware.BodyParser());
     this.use(middleware.serve(path.join(__dirname, '/public')));
-    this.use(middleware.NJT(path.join(__dirname + '/views'), {}));
+    //this.use(middleware.NJT(path.join(__dirname, '/views'), {}));
+    this.use(middleware.view(path.join(__dirname, '/views')));
+    //this.use(middleware.views(path.join(__dirname, '/views'), {map: {html: 'nunjucks'}}));
     this.use(middleware.router);
     this.listen(port, function () {
         debug('server start up in ' + (port));
