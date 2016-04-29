@@ -7,6 +7,6 @@ var server = new Server();
 server.start();
 
 
-server.errHandle(function(err) {
+server.errHandle(function (err) {
     debug(err);
 });

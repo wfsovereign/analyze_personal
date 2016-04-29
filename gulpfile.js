@@ -1,17 +1,22 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    uglify = require('gulp-uglify'),
-    rename = require('gulp-rename'),
-    minifycss = require('gulp-clean-css');
-
+    //uglify = require('gulp-uglify'),
+    //rename = require('gulp-rename'),
+    useref = require('gulp-useref'),
+    execSync = require('child_process').execSync;
+    //minifycss = require('gulp-clean-css');
+//var browserSync = require("browser-sync").create();
+//var reload = browserSync.reload;
 
 var sassSource = 'public/sass/*',
-    jsSource = 'public/js/*',
-    imageSource = 'public/images/*',
-    imageDest = 'public/images',
-    sassDest = 'public/css',
-    jsDest = 'public/js';
+    htmlSource = 'src/views/*.html',
+    sassDest = 'public/css';
 
+function updateJSFile() {
+    var content = 'console.log(' + Math.random() * 10000 + ')';
+    execSync('echo "' + content + '" > tmp.js');
+    console.log('file update success');
+}
 
 gulp.task('sass', function () {
     gulp.src(sassSource)
@@ -20,27 +25,29 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(sassDest));
 });
 
-//gulp.task('js', function () {
-//    gulp.src(jsSource)
-//        //.pipe(uglify())
-//        //.pipe(rename('all.min.js'))
-//        .pipe(gulp.dest(jsDest))
+gulp.task('html', function () {
+    updateJSFile();
+    console.log("let's go watch");
+    return gulp.src('src/views/*.html')
+        .pipe(useref({searchPath: 'public'}))
+        .pipe(gulp.dest('views'));
+});
+
+gulp.task('watch', ['html'], function () {
+    gulp.watch(htmlSource, ['html']);
+});
+
+//gulp.task('serve', ['sass'], function () {
+//    browserSync.init({
+//        server: "./"
+//    });
+//
+//    gulp.watch(sassSource, ['sass']);
+//    gulp.watch(htmlSource).on('change', reload);
 //});
 
-//gulp.task('images', function () {
-//    gulp.src(imageSource)
-//        //.pipe(imagemin({
-//        //    progressive: true
-//        //}))
-//        .pipe(gulp.dest(imageDest))
-//});
 
-gulp.task('default', ['sass'], function () {
+gulp.task('default', ['watch', 'sass', 'html'], function () {
     console.log("gulp build success.");
 });
 
-//gulp.task('watch', ['sass', 'js', 'images'], function () {
-//    gulp.watch(sassSource, ['sass']);
-//    gulp.watch(jsSource, ['js']);
-//    gulp.watch(imageDest, ['images']);
-//});

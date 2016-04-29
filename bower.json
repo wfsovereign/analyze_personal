@@ -1,0 +1,25 @@
+{
+  "name": "search_girl_friends_for_programer",
+  "description": "huatiansite girlfriend programer coder nodejs",
+  "main": "app.js",
+  "authors": [
+    "wfsovereign"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "huatiansite",
+    "girlfriend",
+    "programer",
+    "coder",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/wfsovereign/analyze_personal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ]
+}

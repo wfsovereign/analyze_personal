@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我看看呢</title>
+</head>
+<body>
+<h1>看看</h1>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>昵称</td>
+                <td>地区</td>
+                <td>头像</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% if users %}
+                {% for user in users %}
+                    <tr>
+                        <td>{{user.nickName}}</td>
+                        <td>{{user.province}}</td>
+                        <td><img src='{{user.avatar}}' alt="" width="300px" height="300px"/></td>
+                    </tr>
+                {% endfor %}
+            {% endif%}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

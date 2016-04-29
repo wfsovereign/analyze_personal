@@ -19,7 +19,7 @@ Server.prototype.start = function () {
     this.use(middleware.BodyParser());
     this.use(middleware.serve(path.join(__dirname, '/public')));
     //this.use(middleware.NJT(path.join(__dirname, '/views'), {}));
-    this.use(middleware.view(path.join(__dirname, '/views')));
+    this.use(middleware.view(path.join(__dirname, '/src/views')));
     //this.use(middleware.views(path.join(__dirname, '/views'), {map: {html: 'nunjucks'}}));
     this.use(middleware.router);
     this.listen(port, function () {
