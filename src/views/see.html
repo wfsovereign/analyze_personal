@@ -2,32 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- build:css /public/bower_components/bootstrap/dist/css/bootstrap.min.css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <!-- endbuild -->
     <title>我看看呢</title>
 </head>
 <body>
 <h1>看看</h1>
-<div>
-    <table>
-        <thead>
-            <tr>
-                <td>昵称</td>
-                <td>地区</td>
-                <td>头像</td>
-            </tr>
-        </thead>
-        <tbody>
-            {% if users %}
-                {% for user in users %}
-                    <tr>
-                        <td>{{user.nickName}}</td>
-                        <td>{{user.province}}</td>
-                        <td><img src='{{user.avatar}}' alt="" width="300px" height="300px"/></td>
-                    </tr>
-                {% endfor %}
-            {% endif%}
-        </tbody>
-    </table>
-</div>
 
+<div class="container">
+    {% if users %}
+    {% for user in users %}
+        {% if loop.index % 3 == 1 %}
+        <div class="row">
+        {% endif %}
+                <div class="col-md-4">
+                    <img src='{{user.avatar}}' alt="" width="300px" height="300px" class="img-thumbnail"/>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Details <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>名：{{user.nickName}}</li>
+                            <li>地：{{user.province}}</li>
+                            <li>学：{{user.education}}</li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+        {% if loop.index % 3 == 0 %}
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% endif%}
+</div>
+<!-- build:js /public/bower_components/jquery/dist/jquery.min.js -->
+<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- endbuild -->
+<!-- build:js /public/bower_components/bootstrap/dist/js/bootstrap.min.js -->
+<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- endbuild -->
+<script></script>
 </body>
 </html>

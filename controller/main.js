@@ -7,7 +7,7 @@ exports.rootPath = function *() {
 
 
 exports.seePath = function *() {
-    var users = yield DBC.user.find({}).skip(4100).limit(100);
+    var users = yield DBC.user.find({}).skip(4300).limit(100);
     yield this.render('see', {
         users: users
     });

@@ -1,14 +1,9 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    //uglify = require('gulp-uglify'),
-    //rename = require('gulp-rename'),
     useref = require('gulp-useref'),
     execSync = require('child_process').execSync;
-    //minifycss = require('gulp-clean-css');
-//var browserSync = require("browser-sync").create();
-//var reload = browserSync.reload;
 
-var sassSource = 'public/sass/*',
+var sassSource = 'src/sass/*',
     htmlSource = 'src/views/*.html',
     sassDest = 'public/css';
 
