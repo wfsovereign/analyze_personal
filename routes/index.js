@@ -4,5 +4,6 @@ var controller = require('../controller/main');
 
 MainRouter.get("/", controller.rootPath);
 MainRouter.get("/see", controller.seePath);
+MainRouter.post("/search", controller.searchPath);
 
 module.exports = MainRouter.middleware();

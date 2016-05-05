@@ -14,6 +14,7 @@ function updateJSFile() {
 }
 
 gulp.task('sass', function () {
+    updateJSFile();
     gulp.src(sassSource)
         .pipe(sass())
         //.pipe(minifycss())
@@ -30,6 +31,7 @@ gulp.task('html', function () {
 
 gulp.task('watch', ['html'], function () {
     gulp.watch(htmlSource, ['html']);
+    gulp.watch(sassSource, ['sass']);
 });
 
 //gulp.task('serve', ['sass'], function () {

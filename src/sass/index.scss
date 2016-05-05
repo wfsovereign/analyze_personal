@@ -1,3 +1,6 @@
+
+@import "laypage";
+
 .showBox {
   width: 100%;
   position: relative;
@@ -18,4 +21,8 @@
       overflow: hidden;
     }
   }
+}
+
+.none {
+  display: none;
 }

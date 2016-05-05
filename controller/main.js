@@ -62,11 +62,39 @@ exports.rootPath = function *() {
 
 
 exports.seePath = function *() {
-    var users = yield DBC.user.find({}).skip(4300).limit(100).lean();
+    var pageNum = this.query.pageNum || 1, pageSize = this.query.pageSize || 99;
+    var users = yield DBC.user.find({}).skip((pageNum - 1) * pageSize).limit(pageSize).lean();
+    var totalCount = yield DBC.user.count();
     convertShowInfo(users);
+    console.log(totalCount / pageSize);
     yield this.render('see', {
-        users: users
+        users: users,
+        pager: {
+            totalCount: totalCount,
+            pageSize: pageSize,
+            pageNum: pageNum
+        }
     });
+};
+
+exports.searchPath = function *() {
+    var body = this.request.body;
+    console.log(body);
+    var pageNum = body.pageNum || 1, pageSize = body.pageSize || 99;
+    var users = yield DBC.user.find({}).skip((pageNum - 1) * pageSize).limit(pageSize).lean();
+    var totalCount = yield DBC.user.count();
+    convertShowInfo(users);
+    console.log(users);
+    console.log(totalCount / pageSize);
+    return this.body = {
+        status: 'success',
+        datas: users,
+        pager: {
+            totalCount: totalCount,
+            pageSize: pageSize,
+            pageNum: pageNum
+        }
+    }
 };
 
 

@@ -3,40 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/public/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/combined.css">
     <title>我看看呢</title>
 </head>
 <body>
 <h1>看看</h1>
 
-<div class="container">
-    {% if users %}
-    {% for user in users %}
-        {% if loop.index % 3 == 1 %}
-        <div class="row">
-        {% endif %}
-                <div class="col-md-4">
-                    <img src='{{user.avatar}}' alt="" width="300px" height="300px" class="img-thumbnail"/>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Details <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>名：{{user.nickName}}</li>
-                            <li>地：{{user.province}}</li>
-                            <li>学：{{user.education}}</li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
+<div class="container box">
+    <div id="content">
+        {% if users %}
+        {% for user in users %}
+            {% if loop.index % 3 == 1 %}
+            <div class="row">
+            {% endif %}
+            <div class="col-md-4">
+                <img src='{{user.avatar}}' alt="" width="300px" height="300px" class="img-thumbnail"/>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Details <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>名：{{user.nickName}}</li>
+                        <li>地：{{user.province}}</li>
+                        <li>学：{{user.education}}</li>
+                        <li>龄：{{user.age}}</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
                 </div>
-        {% if loop.index % 3 == 0 %}
+            </div>
+            {% if loop.index % 3 == 0 %}
         </div>
         {% endif %}
-    {% endfor %}
-    {% endif%}
+        {% endfor %}
+        {% endif%}
+
+
+    </div>
+    <div class="pager" id="page"></div>
+    <div class="none">
+        <span id="totalCount">{{pager.totalCount}}</span>
+        <span id="pageSize">{{pager.pageSize}}</span>
+    </div>
 </div>
+
 <script src="/public/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/public/js/lay_page.js"></script>
+<script src="/public/js/see.js"></script>
+
 <script></script>
 </body>
 </html>
